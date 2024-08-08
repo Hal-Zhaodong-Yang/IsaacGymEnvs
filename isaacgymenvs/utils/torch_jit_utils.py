@@ -277,6 +277,14 @@ def compute_rot(torso_quat, velocity, ang_velocity, targets, torso_positions):
 
 
 @torch.jit.script
+def quat_to_axisangle(q):
+    axis = normalize(q[:, :3])
+    axis = torch.where(torch.isnan(axis), 0., axis)
+    angle = 2 * torch.acos(q[:, -1:])
+
+    return axis, angle
+
+@torch.jit.script
 def quat_axis(q, axis=0):
     # type: (Tensor, int) -> Tensor
     basis_vec = torch.zeros(q.shape[0], 3, device=q.device)
