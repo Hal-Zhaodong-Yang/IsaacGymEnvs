@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<robot name="partnet_75612c0c1d5730eaf93a86670701266">
+	<link name="base"/>
+	<link name="link_1">
+		<visual name="base_body-2">
+			<origin xyz="0 0 0"/>
+			<geometry>
+				<mesh filename="tunnel_left_2.obj" scale="1.0 1.0 1.0"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0"/>
+			<geometry>
+				<mesh filename="tunnel_left_2.obj" scale="1.0 1.0 1.0"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="link_2">
+		<visual name="base_body-3">
+			<origin xyz="0 0 0"/>
+			<geometry>
+				<mesh filename="tunnel_right_2.obj" scale="1.0 1.0 1.0"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0"/>
+			<geometry>
+				<mesh filename="tunnel_right_2.obj" scale="1.0 1.0 1.0"/>
+			</geometry>
+		</collision>
+	</link>
+	<joint name="joint_1" type="fixed">
+		<origin rpy="1.570796326794897 0 -1.570796326794897" xyz="0 0 0"/> 
+		<child link="link_1"/>
+		<parent link="base"/>
+	</joint>
+	<joint name="joint_2" type="fixed">
+		<origin rpy="0 0 0" xyz="0 0 0"/>
+		<child link="link_2"/>
+		<parent link="link_1"/>
+	</joint>
+</robot>
